@@ -1,0 +1,78 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{multirow}
+\usepackage[cm]{fullpage}
+\addtolength{\oddsidemargin}{1.2cm} 
+\addtolength{\evensidemargin}{1.2cm}
+\addtolength{\textwidth}{-3.2cm} \addtolength{\topmargin}{0cm}
+\addtolength{\textheight}{1cm}
+
+\title{Learning Logs}
+\author{Will Thomas}
+\begin{document}
+\maketitle
+The main goal of this document is to advance understanding of Log Math and how to efficiently solve Log problems, all while remembering a small number of first principles. \\
+Let us begin by reviewing some of the things we know about Log, and more generally, exponents.
+\\
+\textbf{Review Section}
+\begin{enumerate}
+    \item $\forall x, x^0 = 1$ anything to the 0 power is 1. (This symbol $\forall$ means for all). So for all x values, x to the 0 power is 1! 
+    \item $\forall x, \ a, \ b, \ x^a * x^b = x^{a+b}$ Let us quickly validate this with some easy examples that we can recall when we need to prove this for ourselves. \\
+        Lets choose $x = 2, a = 3, b = 5$: \\
+        $x^a * x^b = 2^3 * 2^5 = 256 = 2^8 = 2^{3+5} = x^{a+b}$ \\
+        Full circle, it really works!
+        How about some problems to make sure this works even more. \\
+        Solve the following the full way through like the above example:
+        \begin{enumerate}
+            \item Solve $3^5 * 3^3$
+            \item Solve $4^1 * 4^2$
+            \item Solve $5^2 * 5^3$
+        \end{enumerate}
+    \item $\log_{a}{b} = c \iff a^c = b$ (This symbol $\iff$ means that the two are the equivalent. So if you know one, the other must be true also)
+    \item $\forall x, x^{-a} = \frac{1}{x^{a}}$ Negative exponents switch to the denominator
+\end{enumerate}
+
+\pagebreak
+\textbf{Extending our Knowledge} \\
+In this section, we will focus on proving things using only our review equations. Thus showing how we can derive more knowledge and equations, while remembering less.
+\begin{enumerate}
+    \item The first thing we will prove is how to divide with common bases for exponents: \\
+        $\forall x, a, b, \frac{x^a}{x^b} = x^{a-b}$ \\
+        To prove this, let us start by splitting apart the fraction into two fractions that are multiplied by one another: \\
+        $\frac{x^a}{x^b} = \frac{x^a}{1} \cdot \frac{1}{x^b}$ \\
+        Then we can apply equation 4 from our review section $\forall x, x^{-a} = \frac{1}{x^a}$ \\
+        So $\frac{1}{x^b}$ turns into $x^{-b}$ leaving us with $x^{a} \cdot x^{-b}$ \\
+        Here, it should be obvious that the equation to apply is equation 2 \\ 
+        $x^{a} * x^{-b} = x^{a+-b} = x^{a-b} \ \square$ ($\square$ mean Done/Proven or Q.E.D) \\
+        Thus we have proven that $\forall x, a, b, \frac{x^a}{x^b} = x^{a-b}$ \\ \\
+        Now for some examples, go through the same process as above to prove the following:
+        \begin{enumerate}
+            \item $\frac{2^6}{2^7} = 2^{-1}$
+            \item $\frac{3^4}{3^3} = 3^{1}$
+            \item $\frac{10^{-3}}{10^{-6}} = 10^3$
+        \end{enumerate}
+    \item The next thing we will prove is related to Logs, more specifically: \\
+        $\forall \log_{x}{a*b} = \log_{x}{a} + \log_{x}{b}$ \\
+        First we should apply equation 3 to the right side of the equation to yield \\
+        \textbf{Note}: When using this symbol $\exists$ below it means "There Exists" so $\exists c_1$ means there exists a value $c_1$ s.t. (such that) the following holds \\
+        $\exists c_1$ s.t. $\log_{x}{a} = c_1 \iff x^{c_1} = a$ and $\exists c_2$ s.t. $\log_{x}{b} = c_2 \iff x^{c_2} = b$, \\ multiplying the values for $a$ and $b$ together we see that $a*b = x^{c_1} * x^{c_2} = x^{c_1+c_2}$ \\
+        Taking the log base x of both sides we are left with 
+        $\log_{x}{a*b} = c_1 + c_2$ \\ substituting back in the values for $c_1, c_2$ we see that $\log_{x}{a*b} = \log_{x}{a} + \log_{x}{b} \ \square$ \\
+        Thus we have proven this new property of logs, all by knowing how $\log$ operates and review equation 3.
+    \item Next we will prove the logarithmic identity. \\
+        $\forall x, \log_{x}{1} = 0$ this is quite simple once we apply review equation 3 \\
+        $\forall x, \log_{x}{1} = 0 \iff x^{0} = 1$ \\
+        As we can see, the right side perfectly matches review equation 1, as anything to the 0 power is 1. \\ 
+        Thus we have proven it $\square$
+    \item We will now prove why the scientific notation approximation method for logarithms works well. \\
+        The approximation states $\log_{10}{(n \times 10^{m})} \approx m + 0.n$ \\
+        First we should apply equation 2 from this section in regards to log of products. \\
+        This allows a reduction of $\log_{10}{(n \times 10^{m})} = \log_{10}{n} + \log_{10}{10^m}$ \\
+        Simplifying we see $\log_{10}{n} + m \approx m + 0.n$ \\
+        $\implies \log_{10}{n} \approx 0.n$. Stated more precisely $\log_{10}{n} \approx \frac{n}{10}$\\
+        If we can prove that $\log_{10}{n} \approx \frac{n}{10}$ holds, then we will have proven the approximation works. We should work under the assumption that if $n$ is less than 1, we would shift our scientific notation so that $n$ is between 1 and 10. (Also shown as $n \in (1,10)$). \\ \\
+        Take the values at each end of the problem $\log_{10}{1} = 0$ and $\log_{10}{10} = 1$
+\end{enumerate}
+
+\end{document}
